@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js" type="text/javascript"></script>
+    <title>Print AWB</title>
+    <style type="text/css">
+        table {
+          border: 1px solid black;
+        }
+        #printable {
+          display: none;
+        }
+        @media print {
+          #non-printable {
+            display: none;
+          }
+          #printable {
+            display: block;
+          }
+          #org {
+            text-transform: uppercase;
+          }
+        }
+      </style>
+</head>
+<body onload="window.print()">
+    
+  <div class="col-sm-12">
+    <table cellpadding="0" cellspacing="0" class="col-sm-12" border="0" style="padding-bottom:10px; font-size:12px;">
+          <tr>
+              <th align="center" rowspan="2" > <img src="../totallogo.jpg" height="40" width="151"> </th>
+              <th  style='padding:5px;' align="left">Nomor Connote: 0107582100084374</th>
+          </tr>
+          <tr>
+              <td rowspan="4">  <img height="45" width="200" id="barcode"/></td>
+          </tr>
+    </table>
+  
+  <div cellpadding="0" cellspacing="0" class="col-sm-12" border="0" style="font-size:12px;">
+    <table class="col-sm-4">
+      <tr>
+        <td>CTC</td>
+      </tr>
+    </table>
+    <table class="col-sm-4">
+      <tr>
+        <td>CTC</td>
+      </tr>
+    </table>
+    <table style="width:33.4%">
+      <tr>
+        <td>CTC</td>
+      </tr>
+    </table>
+  </div>
+  <table cellpadding="0" cellspacing="0" class="col-sm-8" border="0" style="font-size:12px;">
+    <tr style="height:50px;">
+      <td style="width:67%; border-bottom: 1px solid black;"> Test </td>
+    </tr>
+    <tr style="height:60px;">
+      <td style="width:67%;"> Test </td>
+    </tr>
+  </table>
+  <table cellpadding="0" cellspacing="0" border="0" style="font-size:12px; height:122px; width:33.4%; float:left;">
+    <tr>
+      <td> Test </td>
+    </tr>
+  </table>
+</div>
+</body>
+<script> 
+var element = document.getElementById("barcode");
+JsBarcode(element, "{{a.trnNoHAWB}}");
+
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+h = n.getHours();
+mn = n.getMinutes();
+s = n.getSeconds();
+
+
+
+document.getElementById("date").innerHTML = m + "/" + d + "/" + y + "&nbsp;" + h + ":" + mn + ":" + s;
+document.getElementById("date1").innerHTML = m + "/" + d + "/" + y + "&nbsp;" + h + ":" + mn + ":" + s;
+document.getElementById("date2").innerHTML = m + "/" + d + "/" + y + "&nbsp;" + h + ":" + mn + ":" + s;
+</script>
+</html>
